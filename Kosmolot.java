@@ -13,18 +13,18 @@ public class Kosmolot {
         //Sprawdzenie poprawnisci ilosci args
         if (argc == 2) {
 
-            int size_of_rocket = Integer.parseInt(args[0]);
-            if (1 <= size_of_rocket & size_of_rocket <= 75) {//sprawdzenie rozmiaru rakiety
+            int sizeOfRocket = Integer.parseInt(args[0]);
+            if (1 <= sizeOfRocket & sizeOfRocket <= 75) {//sprawdzenie rozmiaru rakiety
 
                 if (args[1].equals("N")) { //rakieta bez pancerza
 
-                    int height = (int) Math.pow((double) size_of_rocket, (double) 2); //obliczenie rozmiaru wysokosci rakiety
-                    int width = 2 * size_of_rocket - 1;                              //obliczanie rozmiaru szerokosci rakiety
+                    int height = (int) Math.pow((double) sizeOfRocket, (double) 2);   //obliczenie rozmiaru wysokosci rakiety
+                    int width = 2 * sizeOfRocket - 1;                                 //obliczanie rozmiaru szerokosci rakiety
 
                     for (int i = 0; i < width; i++) {
                         for (int j = 0; j < height; j++) {
 
-                            if (j % size_of_rocket < size_of_rocket - Math.abs(size_of_rocket - i - 1)) { //podejmowanie decyzji * czy spacja
+                            if (j % sizeOfRocket < sizeOfRocket - Math.abs(sizeOfRocket - i - 1)) { //podejmowanie decyzji * czy spacja
                                 System.out.print("*");
                             } else {
                                 System.out.print(" ");
@@ -36,17 +36,17 @@ public class Kosmolot {
                 } else if (args[1].equals("Y")) {//rakieta z pancerzem
 
                     //powtorzenie kodu z 21-22
-                    int height = (int) Math.pow((double) size_of_rocket, (double) 2);   //obliczenie rozmiaru wysokosci rakiety
-                    int width = 2 * size_of_rocket - 1;                                 //obliczenie rozmiaru szerokosci rakiety
+                    int height = (int) Math.pow((double) sizeOfRocket, (double) 2);   //obliczenie rozmiaru wysokosci rakiety
+                    int width = 2 * sizeOfRocket - 1;                                 //obliczenie rozmiaru szerokosci rakiety
 
                     for (int i = 0; i < width / 2; i++) {               //petle dla gornego skrzydla
                         for (int j = 0; j < height; j++) {
 
-                            if (j % size_of_rocket < size_of_rocket - Math.abs(size_of_rocket - i - 1)) {   //sprzwdzenie czy w danum polu ma byc znak czy spacja
+                            if (j % sizeOfRocket < sizeOfRocket - Math.abs(sizeOfRocket - i - 1)) {   //sprzwdzenie czy w danum polu ma byc znak czy spacja
                                 if (j == 0) {
                                     System.out.print(">");
                                 } else {
-                                    if (j % size_of_rocket == i) {
+                                    if (j % sizeOfRocket == i) {
                                         System.out.print("\\");
                                     } else {
                                         System.out.print("*");
@@ -73,11 +73,11 @@ public class Kosmolot {
                     for (int i = (width + 1) / 2; i < width; i++) {   //petle dolnego skrzydla
                         for (int j = 0; j < height; j++) {
 
-                            if (j % size_of_rocket < size_of_rocket - Math.abs(size_of_rocket - i - 1)) {               //sprzwdzenie czy w danum polu ma byc znak czy spacja
+                            if (j % sizeOfRocket < sizeOfRocket - Math.abs(sizeOfRocket - i - 1)) {               //sprzwdzenie czy w danum polu ma byc znak czy spacja
                                 if (j == 0) {
                                     System.out.print(">");
                                 } else {
-                                    if (j % size_of_rocket == size_of_rocket - Math.abs(size_of_rocket - i - 2)) {
+                                    if (j % sizeOfRocket == sizeOfRocket - Math.abs(sizeOfRocket - i - 2)) {
                                         System.out.print("/");
                                     } else {
                                         System.out.print("*");

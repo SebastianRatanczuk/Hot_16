@@ -16,109 +16,109 @@ public class Galaktyka {
 
             String str = args[0];
 
-            int Galaxy_Size = Integer.parseInt(str.substring(0, str.length() - 1));     //wyciagniecie wymieru galaktyki z napisu
+            int galaxySize = Integer.parseInt(str.substring(0, str.length() - 1));     //wyciagniecie wymieru galaktyki z napisu
 
-            if (Galaxy_Size == 0 | Galaxy_Size > 1001) {                                //sprawdzenie poprawnosci rozmiaru
+            if (galaxySize == 0 | galaxySize > 1001) {                                //sprawdzenie poprawnosci rozmiaru
                 System.out.print("klops");
                 return;
             }
-//            System.out.print(Galaxy_Size+"\n");
+//            System.out.print(galaxySize+"\n");
 
             char Option = str.charAt(str.length() - 1);
 //            System.out.print(Option);
 
-            int X_Size = Galaxy_Size + 2;               //obliczenie rozmiaru macierzy
-            int Y_Size = Galaxy_Size + 3;
+            int xSize = galaxySize + 2;               //obliczenie rozmiaru macierzy
+            int ySize = galaxySize + 3;
 
-            char[][] Table = new char[Y_Size][X_Size];  //wypelnienie macierzy spacjami
-            for (int i = 0; i < Y_Size; i++) {
-                for (int j = 0; j < X_Size; j++) {
+            char[][] Table = new char[ySize][xSize];  //wypelnienie macierzy spacjami
+            for (int i = 0; i < ySize; i++) {
+                for (int j = 0; j < xSize; j++) {
                     Table[i][j] = ' ';
                 }
             }
 
             int counter = 0;
 
-            int X_pos = 0;
-            int Y_pos = 0;
-            int Direction = 0;
+            int xPos = 0;
+            int yPos = 0;
+            int direction = 0;
 
 
-            do {                //0-2 wedrowanie od punktu do krawedzi
-                //3-6 by bylo wolne jedno miejsce miedzy gwiazdkami -> ***.*
-                //to fix: moze da sie jakos polaczyc warunki w jeden warunek
+            do {    //0-2 wedrowanie od punktu do krawedzi
+                    //3-6 by bylo wolne jedno miejsce miedzy gwiazdkami -> ***.*
+                    //to fix: moze da sie jakos polaczyc warunki w jeden warunek
 
-                Table[Y_pos][X_pos] = '*';
+                Table[yPos][xPos] = '*';
 
 
-                switch (Direction) {
+                switch (direction) {
                     case 0:                         //-->
-                        if (X_pos < X_Size - 1) {
-                            X_pos++;                //przesuniecie w bok
+                        if (xPos < xSize - 1) {
+                            xPos++;                //przesuniecie w bok
                             counter = 0;            //reset warunku
                         } else {
-                            Direction = 1;          //zmiana kierunku
+                            direction = 1;          //zmiana kierunku
                             counter++;              //zwiekszenie licznika stopu
                         }
                         break;
 
                     case 1:
-                        if (Y_pos < Y_Size - 1) {
-                            Y_pos++;
+                        if (yPos < ySize - 1) {
+                            yPos++;
                             counter = 0;
                         } else {
-                            Direction = 2;
+                            direction = 2;
                             counter++;
                         }
                         break;
 
                     case 2:
-                        if (X_pos > 0) {
-                            X_pos--;
+                        if (xPos > 0) {
+                            xPos--;
                             counter = 0;
 
                         } else {
-                            Direction = 3;
+                            direction = 3;
                             counter++;
                         }
                         break;
 
                     case 3:
-                        if (Table[Y_pos - 2][X_pos] != '*') {
-                            Y_pos--;
+                        if (Table[yPos - 2][xPos] != '*') {
+                            yPos--;
                             counter = 0;
                         } else {
-                            Direction = 4;
+                            direction = 4;
                             counter++;
                         }
                         break;
 
                     case 4:
-                        if (Table[Y_pos][X_pos + 2] != '*') {
-                            X_pos++;
+                        if (Table[yPos][xPos + 2] != '*') {
+                            xPos++;
                             counter = 0;
                         } else {
-                            Direction = 5;
+                            direction = 5;
                             counter++;
                         }
                         break;
 
                     case 5:
-                        if (Table[Y_pos + 2][X_pos] != '*') {
-                            Y_pos++;
+                        if (Table[yPos + 2][xPos] != '*') {
+                            yPos++;
                             counter = 0;
                         } else {
-                            Direction = 6;
+                            direction = 6;
                             counter++;
                         }
                         break;
 
                     case 6:
-                        if (Table[Y_pos][X_pos - 2] != '*') {
-                            X_pos--;
+                        if (Table[yPos][xPos - 2] != '*') {
+                            xPos--;
                             counter = 0;
                         } else {
-                            Direction = 3;
+                            direction = 3;
                             counter++;
                         }
                         break;
@@ -129,8 +129,8 @@ public class Galaktyka {
             counter = 0;
             switch (Option) {       //wyswietlanie tej samej macierzy w roznych permutacjach
                 case 'W':
-                    for (int j = 0; j < Y_Size; j++) {
-                        for (int k = 0; k < X_Size; k++) {
+                    for (int j = 0; j < ySize; j++) {
+                        for (int k = 0; k < xSize; k++) {
                             System.out.print(Table[j][k]);
 
                             if (Table[j][k] == ' ') {
@@ -143,8 +143,8 @@ public class Galaktyka {
                     break;
 
                 case 'N':
-                    for (int k = 0; k < X_Size; k++) {
-                        for (int j = Y_Size - 1; j >= 0; j--) {
+                    for (int k = 0; k < xSize; k++) {
+                        for (int j = ySize - 1; j >= 0; j--) {
                             System.out.print(Table[j][k]);
 
                             if (Table[j][k] == ' ') {
@@ -157,8 +157,8 @@ public class Galaktyka {
                     break;
 
                 case 'E':
-                    for (int j = Y_Size - 1; j >= 0; j--) {
-                        for (int k = X_Size - 1; k >= 0; k--) {
+                    for (int j = ySize - 1; j >= 0; j--) {
+                        for (int k = xSize - 1; k >= 0; k--) {
                             System.out.print(Table[j][k]);
 
                             if (Table[j][k] == ' ') {
@@ -171,8 +171,8 @@ public class Galaktyka {
                     break;
 
                 case 'S':
-                    for (int k = X_Size - 1; k >= 0; k--) {
-                        for (int j = 0; j < Y_Size; j++) {
+                    for (int k = xSize - 1; k >= 0; k--) {
+                        for (int j = 0; j < ySize; j++) {
                             System.out.print(Table[j][k]);
 
                             if (Table[j][k] == ' ') {
