@@ -49,13 +49,16 @@ public class Drwal {
             int szerokosc = Integer.parseInt(args[3]) - 1;
             int wysokosc = Integer.parseInt(args[4]) - 1;
 
-            Scanner scan = new Scanner(System.in);
+            Scanner scan = new Scanner(System.in,"UTF-8");
+
             ArrayList<String> listOfStrings = new ArrayList<String>();
 
 
             int licznik = 0;
             while (scan.hasNext()) {              //zapisanie pliku do pamieci;
+
                 String line = scan.nextLine();
+
                 licznik++;
                 if (line.length() > szerokosc | licznik > szerokosc) {
                     System.out.print("klops");
