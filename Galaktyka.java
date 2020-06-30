@@ -18,7 +18,7 @@ public class Galaktyka {
 
             int galaxySize = Integer.parseInt(str.substring(0, str.length() - 1));     //wyciagniecie wymieru galaktyki z napisu
 
-            if (galaxySize == 0 | galaxySize > 1001) {                                //sprawdzenie poprawnosci rozmiaru
+            if (galaxySize == 0 | galaxySize > 1000) {                                //sprawdzenie poprawnosci rozmiaru
                 System.out.print("klops");
                 return;
             }
