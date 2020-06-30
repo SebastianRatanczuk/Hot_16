@@ -52,10 +52,17 @@ public class Drwal {
             Scanner scan = new Scanner(System.in);
             ArrayList<String> listOfStrings = new ArrayList<String>();
 
-            while (scan.hasNext()) {              //zapisanie pliku do pamieci;
 
+            int licznik = 0;
+            while (scan.hasNext()) {              //zapisanie pliku do pamieci;
                 String line = scan.nextLine();
+                licznik++;
+                if (line.length() > szerokosc | licznik > szerokosc) {
+                    System.out.print("klops");
+                    return;
+                }
                 listOfStrings.add(line);
+
             }
 
             findAndReplace(listOfStrings, xStart, yStart, kolor, szerokosc, wysokosc);       //odpalenie rekurencji 
